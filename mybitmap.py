@@ -60,9 +60,10 @@ def create_index(input_file, output_path, sorted):
 		print(f"Error while trying to read from '{input_file}':", e)
 		sys.exit(1)
 
-def flush_buckets(buckets, word_size):
+def flush_buckets(buckets, word_size, rows_read):
 	"""
 	Transfer any runs to the string to output.
+	If rows_read is greater than 0, pad the rest of the output strings.
 	"""
 	for bucket in buckets:
 		if bucket[0]['1'] > 0:
@@ -77,6 +78,9 @@ def flush_buckets(buckets, word_size):
 			bucket[2] += '10' + '0'*(word_size-2-len(bin_str)) + bin_str
 			bucket[0]['0'] = 0
 
+		if rows_read > 0:
+			# Pad with 0's to the right and add literal
+			bucket[2] += '0' + bucket[3] + '0'*(word_size-1-rows_read)
 
 def modify_buckets(buckets, word_size):
 	"""
@@ -170,7 +174,7 @@ def compress_index(bitmap_index, output_path, compression_method, word_size):
 
 						bit = infile.read(1)
 
-					flush_buckets(buckets, word_size)
+					flush_buckets(buckets, word_size, rows_read)
 
 					for bucket in buckets:
 						outfile.write(bucket[2] + '\n')
