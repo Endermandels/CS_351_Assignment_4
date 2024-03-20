@@ -1,5 +1,9 @@
 import sys
 
+"""
+					TODO: Handle More Than 64 Runs in a Row
+"""
+
 def matches(expr):
 	"""
 	If expr is True, return '1'.
@@ -220,13 +224,26 @@ def main():
 				+ '<compression_method> <word_size>')
 			sys.exit(1)
 
-		compress_index(	sys.argv[2],
-				sys.argv[3],
-				sys.argv[4],
-				int(sys.argv[5]))
+		c_method = sys.argv[4]
+
+		if c_method == 'WAH':
+			compress_index(	sys.argv[2],
+					sys.argv[3],
+					c_method,
+					int(sys.argv[5]))
+
+		elif c_method == 'BBC':
+			print('Please use WAH for the compression_method')
+			sys.exit(1)
+
+		else:
+			print('Please specify one of the following compression methods: ' \
+				+ 'BBC, WAH')
+			sys.exit(1)
+
 	else:
-		print("Error: Unspecified Index or Compression: Specify by typing 'index' or " \
-			+ "'compression'")
+		print("Error: Unspecified Index or Compression: Specify by typing 'i'/'index' or " \
+			+ "'c'/'compression'")
 		sys.exit(1)
 
 if __name__ == '__main__':
