@@ -1,19 +1,9 @@
 import sys
 
-"""
-					TODO: Handle More Than 64 Runs in a Row
-"""
+def matches(expr: bool):
+	return '1' if expr else '0'
 
-def matches(expr):
-	"""
-	If expr is True, return '1'.
-	Otherwise, return '0'.
-	"""
-	if expr:
-		return '1'
-	return '0'
-
-def parse_row(row):
+def parse_row(row: str):
 	"""
 	Takes a row from a data file and converts it to bits.
 	"""
@@ -64,6 +54,16 @@ def create_index(input_file, output_path, sorted):
 		print(f"Error while trying to read from '{input_file}':", e)
 		sys.exit(1)
 
+def run_to_str(bit: str, bucket: list, word_size: int):
+	"""
+	Write a run of <bit>'s to file.
+	Modifies the 0th and 2nd indeces of bucket.
+	"""
+
+	bin_str = '{0:b}'.format(bucket[0][bit])
+	bucket[2] += '1' + bit + '0'*(word_size-2-len(bin_str)) + bin_str
+	bucket[0][bit] = 0
+
 def flush_buckets(buckets, word_size, rows_read):
 	"""
 	Transfer any runs to the string to output.
@@ -72,15 +72,11 @@ def flush_buckets(buckets, word_size, rows_read):
 	for bucket in buckets:
 		if bucket[0]['1'] > 0:
 			# Write run of 1's to file, then store run of 0's
-			bin_str = '{0:b}'.format(bucket[0]['1'])
-			bucket[2] += '11' + '0'*(word_size-2-len(bin_str)) + bin_str
-			bucket[0]['1'] = 0
+			run_to_str('1', bucket, word_size)
 
 		elif bucket[0]['0'] > 0:
 			# Write run of 0's to file, then store run of 1's
-			bin_str = '{0:b}'.format(bucket[0]['0'])
-			bucket[2] += '10' + '0'*(word_size-2-len(bin_str)) + bin_str
-			bucket[0]['0'] = 0
+			run_to_str('0', bucket, word_size)
 
 		if rows_read > 0:
 			# Pad with 0's to the right and add literal
@@ -97,38 +93,37 @@ def modify_buckets(buckets, word_size):
 	Empty bucket (after first value).
 	"""
 	for bucket in buckets:
-		run_0 = bucket[1]['0']
-		run_1 = bucket[1]['1']
-
-		if run_0:
+		if bucket[1]['0']:
 			if bucket[0]['1'] > 0:
 				# Write run of 1's to file, then store run of 0's
-				bin_str = '{0:b}'.format(bucket[0]['1'])
-				bucket[2] += '11' + '0'*(word_size-2-len(bin_str)) + bin_str
-				bucket[0]['1'] = 0
+				run_to_str('1', bucket, word_size)
+
+			elif bucket[0]['0'] == 2**(word_size-2)-1:
+				# Too many runs for one compressed word
+				run_to_str('0', bucket, word_size)
+
 			bucket[0]['0'] += 1
 
-		elif run_1:
+		elif bucket[1]['1']:
 			if bucket[0]['0'] > 0:
 				# Write run of 0's to file, then store run of 1's
-				bin_str = '{0:b}'.format(bucket[0]['0'])
-				bucket[2] += '10' + '0'*(word_size-2-len(bin_str)) + bin_str
-				bucket[0]['0'] = 0
+				run_to_str('0', bucket, word_size)
+
+			elif bucket[0]['1'] == 2**(word_size-2)-1:
+				# Too many runs for one compressed word
+				run_to_str('1', bucket, word_size)
+
 			bucket[0]['1'] += 1
 
 		else:
 			# Encountered Literal
 			if bucket[0]['1'] > 0:
 				# Write run of 1's to file, then store run of 0's
-				bin_str = '{0:b}'.format(bucket[0]['1'])
-				bucket[2] += '11' + '0'*(word_size-2-len(bin_str)) + bin_str
-				bucket[0]['1'] = 0
+				run_to_str('1', bucket, word_size)
 
 			elif bucket[0]['0'] > 0:
 				# Write run of 0's to file, then store run of 1's
-				bin_str = '{0:b}'.format(bucket[0]['0'])
-				bucket[2] += '10' + '0'*(word_size-2-len(bin_str)) + bin_str
-				bucket[0]['0'] = 0
+				run_to_str('0', bucket, word_size)
 
 			bucket[2] += '0' + bucket[3]
 
@@ -143,7 +138,7 @@ def compress_index(bitmap_index, output_path, compression_method, word_size):
 	output_file = f"{output_path}/{fn}_{compression_method}_{str(word_size)}"
 
 	# First dict: number and type of runs
-	# Second dict: whether the bits read in is a run and what type they are
+	# Second dict: whether the bits read in are a run and what type they are
 	# First string: bits to output
 	# Second string: bits read in
 	buckets = []
@@ -169,7 +164,7 @@ def compress_index(bitmap_index, output_path, compression_method, word_size):
 							buckets[bindex][1]['0'] = 0
 							buckets[bindex][3] += bit
 							bindex += 1
-						else:
+						elif bindex > 0: # Waits until a '1' or '0' is found
 							rows_read += 1
 							if rows_read == word_size-1:
 								modify_buckets(buckets, word_size)
