@@ -1,0 +1,17 @@
+test_index(), time elapsed: 0.5713133811950684, file size: 1700000
+test_index_small(), time elapsed: 0.0061337947845458984, file size: 17000
+test_index_sorted(), time elapsed: 0.5673165321350098, file size: 1700000
+test_wah_8_small(), time elapsed: 0.008588075637817383, file size: 15624
+test_wah_16_small(), time elapsed: 0.007366657257080078, file size: 16720
+test_wah_32_small(), time elapsed: 0.007113218307495117, file size: 16880
+test_wah_64_small(), time elapsed: 0.006960630416870117, file size: 16400
+test_wah_4(), time elapsed: 2.5381407737731934, file size: 1497668
+test_wah_8(), time elapsed: 1.5597288608551025, file size: 1557992
+test_wah_16(), time elapsed: 1.1388850212097168, file size: 1661744
+test_wah_32(), time elapsed: 0.847989559173584, file size: 1650000
+test_wah_64(), time elapsed: 0.7426884174346924, file size: 1626128
+test_wah_4_sorted(), time elapsed: 1.4771854877471924, file size: 716924
+test_wah_8_sorted(), time elapsed: 0.7875399589538574, file size: 51728
+test_wah_16_sorted(), time elapsed: 0.7124450206756592, file size: 56720
+test_wah_32_sorted(), time elapsed: 0.679612398147583, file size: 115600
+test_wah_64_sorted(), time elapsed: 0.6659739017486572, file size: 227216

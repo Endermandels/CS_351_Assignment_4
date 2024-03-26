@@ -1,5 +1,6 @@
 data
 mine
 results
+output
 .*
 _*
