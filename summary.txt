@@ -11,4 +11,4 @@ stats.txt:
     The index and compression times and sizes over three executions of mybitmap.py.
 
 comparison.txt:
-    Comparisons of the different indexing and compression methods on the large test file.
+    Comparisons between the indexes and compressed files of animals.txt and animals_sorted.txt.

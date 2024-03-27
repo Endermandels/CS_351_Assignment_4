@@ -30,10 +30,12 @@ Analysis:
     For compressing the sorted indexes:
         A word size of 4 produced the smallest compression ratio.
         A word size of 8 produced the largest compression ratio in a respectable amount of time.
+
         Even though the word size of 4 had more runs than the word size of 8, 
         the runs are not as compact because each compressed word can only store 3 runs at most,
         whereas the compressed word of size 8 can store up to 63 runs at most, an exponential increase.
-        So each compressed word of size 8 stores more information than two compressed words of size 4.
+        Each compressed word of size 8 stores more information than two compressed words of size 4.
+        
         The same could be said for the larger word sizes, 
         except that it is more likely that less of the whole compressed word was used for compressing runs.
         The 32 and 64 word sizes would probably work better on a larger sorted index.
