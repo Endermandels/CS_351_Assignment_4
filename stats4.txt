@@ -1,0 +1,17 @@
+test_index(), time elapsed: 0.5939, file size: 1700000
+test_index_small(), time elapsed: 0.0061, file size: 17000
+test_index_sorted(), time elapsed: 0.6286, file size: 1700000
+test_wah_8_small(), time elapsed: 0.0084, file size: 15624, num_run: 752, num_lit: 1536
+test_wah_16_small(), time elapsed: 0.0072, file size: 16720, num_run: 145, num_lit: 927
+test_wah_32_small(), time elapsed: 0.0072, file size: 16880, num_run: 13, num_lit: 515
+test_wah_64_small(), time elapsed: 0.0068, file size: 16400, num_run: 0, num_lit: 256
+test_wah_4(), time elapsed: 2.5587, file size: 1497668, num_run: 318628, num_lit: 214716
+test_wah_8(), time elapsed: 1.5387, file size: 1557992, num_run: 76429, num_lit: 152147
+test_wah_16(), time elapsed: 1.0982, file size: 1661744, num_run: 14025, num_lit: 92647
+test_wah_32(), time elapsed: 0.8524, file size: 1650000, num_run: 1271, num_lit: 50345
+test_wah_64(), time elapsed: 0.7286, file size: 1626128, num_run: 26, num_lit: 25382
+test_wah_4_sorted(), time elapsed: 1.4938, file size: 716924, num_run: 532104, num_lit: 1240
+test_wah_8_sorted(), time elapsed: 0.7525, file size: 51728, num_run: 226996, num_lit: 1580
+test_wah_16_sorted(), time elapsed: 0.6647, file size: 56720, num_run: 104962, num_lit: 1710
+test_wah_32_sorted(), time elapsed: 0.6284, file size: 115600, num_run: 49838, num_lit: 1778
+test_wah_64_sorted(), time elapsed: 0.6205, file size: 227216, num_run: 23604, num_lit: 1804

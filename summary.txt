@@ -1,0 +1,14 @@
+summary.txt:
+    A summary of all files included in the Assignment 4 submission.
+
+mybitmap.py:
+    A python file which creates and compresses indexes over comma-separated-values in a data file.
+
+README.txt:
+    Instructions on how to run the create_index and compress_index functions in mybitmap.py.
+
+stats.txt:
+    The index and compression times and sizes over three executions of mybitmap.py.
+
+comparison.txt:
+    Comparisons of the different indexing and compression methods on the large test file.

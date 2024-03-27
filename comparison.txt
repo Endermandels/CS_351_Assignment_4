@@ -1,0 +1,39 @@
+The following are comparisons between the indexes and compressed files of animals.txt and animals_sorted.txt.
+A larger compression ratio means the compressed size is smaller than the uncompressed size.
+
+Ratio = (uncompressed size) / (compressed size)
+
+File                                Ratio       Avg Time (s)    Runs        Literals
+animals.txt_WAH_4                   1.1351      2.5008          318628      214716
+animals.txt_WAH_8                   1.0911      1.5256          76429       152147
+animals.txt_WAH_16                  1.0230      1.0977          14025       92647
+animals.txt_WAH_32                  1.0303      0.8372          1271        50345
+animals.txt_WAH_64                  1.0454      0.7215          26          25382
+animals_sorted.txt_sorted_WAH_4     2.3712      1.4556          532104      1240
+animals_sorted.txt_sorted_WAH_8     32.864      0.7575          226996      1580
+animals_sorted.txt_sorted_WAH_16    29.972      0.6951          104962      1710
+animals_sorted.txt_sorted_WAH_32    14.706      0.6420          49838       1778
+animals_sorted.txt_sorted_WAH_64    7.4819      0.6317          23604       1804
+
+Analysis:
+    The compressions on the unsorted data resulted in near one-to-one compression ratios.
+    Since the data is unsorted, runs are not encouraged, resulting in more literals than runs,
+    which results in a larger compressed file.
+
+    The compressions on the sorted data were significantly smaller than the unsorted data's compressions.
+    Since the data is sorted, runs are encouraged, resulting in more runs than literals,
+    which results in a smaller compressed file.
+
+    The average compression time was much slower on lower word sizes.
+    This was likely because the program spent more time processing data than reading data.
+
+    For compressing the sorted indexes:
+        A word size of 4 produced the smallest compression ratio.
+        A word size of 8 produced the largest compression ratio in a respectable amount of time.
+        Even though the word size of 4 had more runs than the word size of 8, 
+        the runs are not as compact because each compressed word can only store 3 runs at most,
+        whereas the compressed word of size 8 can store up to 63 runs at most, an exponential increase.
+        So each compressed word of size 8 stores more information than two compressed words of size 4.
+        The same could be said for the larger word sizes, 
+        except that it is more likely that less of the whole compressed word was used for compressing runs.
+        The 32 and 64 word sizes would probably work better on a larger sorted index.

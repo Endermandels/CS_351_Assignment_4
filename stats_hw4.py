@@ -19,7 +19,7 @@ def test_index():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/bitmaps/animals.txt")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./data/data/bitmaps/animals", "./output/bitmaps/animals.txt")
 
 def test_index_small():
@@ -28,7 +28,7 @@ def test_index_small():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/bitmaps/animals_small.txt")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./data/data/bitmaps/animals_small", "./output/bitmaps/animals_small.txt")
 
 def test_index_sorted():
@@ -37,7 +37,7 @@ def test_index_sorted():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/bitmaps/animals_sorted.txt_sorted")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./data/data/bitmaps/animals_sorted", "./output/bitmaps/animals_sorted.txt_sorted")
 
 #=========================================================================================
@@ -49,7 +49,7 @@ def test_wah_8_small():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals_small.txt_WAH_8")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./data/data/compressed/animals_small_WAH_8", "./output/compressed/animals_small.txt_WAH_8")
 
 def test_wah_16_small():
@@ -58,7 +58,7 @@ def test_wah_16_small():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals_small.txt_WAH_16")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./data/data/compressed/animals_small_WAH_16", "./output/compressed/animals_small.txt_WAH_16")
 
 def test_wah_32_small():
@@ -67,7 +67,7 @@ def test_wah_32_small():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals_small.txt_WAH_32")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./data/data/compressed/animals_small_WAH_32", "./output/compressed/animals_small.txt_WAH_32")
 
 def test_wah_64_small():
@@ -76,7 +76,7 @@ def test_wah_64_small():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals_small.txt_WAH_64")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./data/data/compressed/animals_small_WAH_64", "./output/compressed/animals_small.txt_WAH_64")
 
 #=========================================================================================
@@ -88,7 +88,7 @@ def test_wah_4():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals.txt_WAH_4")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./mine/mine/compressed/animals_WAH_4", "./output/compressed/animals.txt_WAH_4")    
 
 def test_wah_8():
@@ -97,7 +97,7 @@ def test_wah_8():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals.txt_WAH_8")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./mine/mine/compressed/animals_WAH_8", "./output/compressed/animals.txt_WAH_8")
 
 def test_wah_16():
@@ -106,7 +106,7 @@ def test_wah_16():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals.txt_WAH_16")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./mine/mine/compressed/animals_WAH_16", "./output/compressed/animals.txt_WAH_16")
 
 def test_wah_32():
@@ -115,7 +115,7 @@ def test_wah_32():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals.txt_WAH_32")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./mine/mine/compressed/animals_WAH_32", "./output/compressed/animals.txt_WAH_32")
 
 def test_wah_64():
@@ -124,7 +124,7 @@ def test_wah_64():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals.txt_WAH_64")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./mine/mine/compressed/animals_WAH_64", "./output/compressed/animals.txt_WAH_64")
 
 #=========================================================================================
@@ -136,7 +136,7 @@ def test_wah_4_sorted():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals_sorted.txt_sorted_WAH_4")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./mine/mine/compressed/animalsSorted_sorted_WAH_4", "./output/compressed/animals_sorted.txt_sorted_WAH_4")
 
 def test_wah_8_sorted():
@@ -145,7 +145,7 @@ def test_wah_8_sorted():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals_sorted.txt_sorted_WAH_8")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./mine/mine/compressed/animalsSorted_sorted_WAH_8", "./output/compressed/animals_sorted.txt_sorted_WAH_8")
 
 def test_wah_16_sorted():
@@ -154,7 +154,7 @@ def test_wah_16_sorted():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals_sorted.txt_sorted_WAH_16")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./mine/mine/compressed/animalsSorted_sorted_WAH_16", "./output/compressed/animals_sorted.txt_sorted_WAH_16")
 
 def test_wah_32_sorted():
@@ -163,7 +163,7 @@ def test_wah_32_sorted():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals_sorted.txt_sorted_WAH_32")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./mine/mine/compressed/animalsSorted_sorted_WAH_32", "./output/compressed/animals_sorted.txt_sorted_WAH_32")
 
 def test_wah_64_sorted():
@@ -172,7 +172,7 @@ def test_wah_64_sorted():
     t1 = time.time()
     frame = inspect.stack()[1]
     fs = os.stat("./output/compressed/animals_sorted.txt_sorted_WAH_64")
-    print(frame[4][0].strip() + ", time elapsed: " + str(t1-t0) + ", file size: " + str(fs.st_size))
+    print(frame[4][0].strip() + ", time elapsed: " + str(round(t1-t0, 4)) + ", file size: " + str(fs.st_size))
     assert cmp_files("./mine/mine/compressed/animalsSorted_sorted_WAH_64", "./output/compressed/animals_sorted.txt_sorted_WAH_64")
 
 def main():

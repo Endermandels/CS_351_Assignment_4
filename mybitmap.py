@@ -1,3 +1,12 @@
+"""
+Assignment 4
+Elijah Delavar
+CS 351
+
+This file creates and compresses bitmap indexes over data files of the structure: animal,age,adopted
+The compression methods used a window to compress the data
+"""
+
 import sys
 
 def matches(expr: bool):

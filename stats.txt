@@ -1,0 +1,21 @@
+File                                Size (bytes)    Time1 (s)       Time2 (s)       Time3 (s)       IsIndex         IsCompressed
+animals.txt                         1342166         N/A             N/A             N/A             False           False
+animals_sorted.txt                  1342166         N/A             N/A             N/A             False           False
+animals_small.txt                   13471           N/A             N/A             N/A             False           False
+animals.txt                         1700000         0.5900          0.5713          0.5980          True            False
+animals_sorted.txt_sorted           1700000         0.6006          0.5673          0.5836          True            False
+animals_small.txt                   17000           0.0063          0.0061          0.0060          True            False
+animals.txt_WAH_4                   1497668         2.4948          2.5263          2.4812          False           True
+animals.txt_WAH_8                   1557992         1.5127          1.5548          1.5094          False           True
+animals.txt_WAH_16                  1661744         1.0930          1.1107          1.0895          False           True
+animals.txt_WAH_32                  1650000         0.8305          0.8407          0.8404          False           True
+animals.txt_WAH_64                  1626128         0.7176          0.7254          0.7216          False           True
+animals_sorted.txt_sorted_WAH_4     716924          1.4507          1.4707          1.4454          False           True
+animals_sorted.txt_sorted_WAH_8     51728           0.7545          0.7786          0.7394          False           True
+animals_sorted.txt_sorted_WAH_16    56720           0.7457          0.6755          0.6640          False           True
+animals_sorted.txt_sorted_WAH_32    115600          0.6507          0.6453          0.6299          False           True
+animals_sorted.txt_sorted_WAH_64    227216          0.6371          0.6317          0.6262          False           True
+animals_small.txt_WAH_8             15624           0.0082          0.0086          0.0085          False           True
+animals_small.txt_WAH_16            16720           0.0072          0.0069          0.0072          False           True
+animals_small.txt_WAH_32            16880           0.0067          0.0067          0.0072          False           True
+animals_small.txt_WAH_64            16400           0.0067          0.0065          0.0065          False           True
